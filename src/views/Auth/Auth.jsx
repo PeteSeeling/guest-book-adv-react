@@ -12,6 +12,40 @@ export default function Login(){
     const { formState, handleFormChange } = useForm({ email: '', password: ''});
     const [error, setError] = useState(null);
 
-    const { from } = 
+    const { from } = location.state || {from: {pathname: '/' }};
+
+    const handleLogin = (e) => {
+        e.preventDefault();
+
+        const loginSuccess = auth.login(formState.email, formState.password);
+        !loginSuccess ? setError('Login Unsuccessful') : history.replace(from);
+    };
+
+    return(
+        <><>
+            <h3>You must log in to view the page at {from.pathname}</h3>
+            </>
+            <form 
+            onSubmit={handleLogin}
+            onChange={handleFormChange}>
+                <label for='email'>Email</label>
+                <input 
+                id='email'
+                name='email'
+                type='email'
+                value={formState.email}
+                />{' '}
+                <label for='password'>Password</label>
+                <input
+                id='password'
+                name='password'
+                type='password'
+                value={formState.password}
+                />
+                <button type='submit' aria-label='Sign-in'>Sign In</button>
+            </form>
+            </>
+    )
+
 
 }
