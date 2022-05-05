@@ -2,6 +2,7 @@ import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
 import { useAuth } from '../../hooks/useAuth';
 import { useForm } from '../../hooks/useForm';
+import { useUser } from '../../context/UserContext';
 
 
 
@@ -11,14 +12,21 @@ export default function Login(){
     const auth = useAuth();
     const { formState, handleFormChange } = useForm({ email: '', password: ''});
     const [error, setError] = useState(null);
+    const { login } = useUser();
 
     const { from } = location.state || {from: {pathname: '/' }};
 
     const handleLogin = (e) => {
-        e.preventDefault();
-
+        try{
+            e.preventDefault();
+            await login(email, password)
+        
         const loginSuccess = auth.login(formState.email, formState.password);
         !loginSuccess ? setError('Login Unsuccessful') : history.replace(from);
+
+        }catch(error){
+            setError(error.message)
+        }
     };
 
     return(
