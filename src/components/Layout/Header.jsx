@@ -12,8 +12,9 @@ export default function Header() {
     };
 
     return (
-        <><div>
-            <Link to='/'>GuestBook</Link>
+        <>
+        <div>
+            <Link to='/'><p>GuestBook</p></Link>
         </div>
         <div>
         {user?.email ?(

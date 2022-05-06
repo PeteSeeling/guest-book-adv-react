@@ -4,19 +4,20 @@ import { useUser } from '../../context/UserContext';
 
 
 
-export default async function Login(){
+export default function Login(){
     // const history = useHistory();
     const location = useLocation();
-    const { formState, handleFormChange } = useForm({ email: '', password: ''});
+  
     const [error, setError] = useState(null);
-    const { login } = useUser();
+    const context = useUser();
 
-    const { from } = location.state || {from: {pathname: '/' }};
 
-    const handleLogin = (e) => {
+    async function handleLogin(e){
         try{
             e.preventDefault();
-           login(email, password)
+           context.login(email, password)
+           const url = location.state.from ? location.state.from.pathname : '/';
+           history.replaceState(url);
 
         }catch(error){
             setError(error.message)
@@ -24,25 +25,27 @@ export default async function Login(){
     };
 
     return(
-        <><>
-            <h3>You must log in to view the page at {from.pathname}</h3>
-            </>
+        <>
+            <h3>Sign In/Sign Up</h3>
+            
             <form 
             onSubmit={handleLogin}
-            onChange={handleFormChange}>
-                <label htmlfor='email'>Email</label>
+            // onChange={handleFormChange}
+            >
+                <label htmlFor='email'>
+                    <p>Email</p></label>
                 <input 
                 id='email'
                 name='email'
                 type='email'
-                value={formState.email}
-                />{' '}
-                <label htmlfor='password'>Password</label>
+                onChange={(e) => setEmail(e.target.value)}
+                />{''}
+                <label htmlFor='password'>Password</label>
                 <input
                 id='password'
                 name='password'
                 type='password'
-                value={formState.password}
+                value={context.password}
                 />
                 <button type='submit' aria-label='Sign-in'>Sign In</button>
             </form>
