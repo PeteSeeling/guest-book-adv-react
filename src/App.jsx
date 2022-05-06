@@ -16,9 +16,9 @@ export default function App() {
         </Route>
         
 
-        {/* // <PrivateRoute path='/'>
-        //   <EntryList />
-        // </PrivateRoute> */} 
+    {/* <PrivateRoute path='/'>
+    <EntryList />
+    </PrivateRoute>  */}
 
       </Switch>
 
