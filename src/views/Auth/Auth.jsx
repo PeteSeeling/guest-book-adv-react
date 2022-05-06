@@ -1,15 +1,12 @@
 import { useState } from 'react';
 import { useHistory, useLocation } from 'react-router-dom';
-import { useAuth } from '../../hooks/useAuth';
-import { useForm } from '../../hooks/useForm';
 import { useUser } from '../../context/UserContext';
 
 
 
-export default function Login(){
+export default async function Login(){
     const history = useHistory();
     const location = useLocation();
-    const auth = useAuth();
     const { formState, handleFormChange } = useForm({ email: '', password: ''});
     const [error, setError] = useState(null);
     const { login } = useUser();
@@ -19,7 +16,7 @@ export default function Login(){
     const handleLogin = (e) => {
         try{
             e.preventDefault();
-            await login(email, password)
+           login(email, password)
 
         }catch(error){
             setError(error.message)
