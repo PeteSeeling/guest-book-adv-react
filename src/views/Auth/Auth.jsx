@@ -5,7 +5,7 @@ import { useUser } from '../../context/UserContext';
 
 
 export default async function Login(){
-    const history = useHistory();
+    // const history = useHistory();
     const location = useLocation();
     const { formState, handleFormChange } = useForm({ email: '', password: ''});
     const [error, setError] = useState(null);
