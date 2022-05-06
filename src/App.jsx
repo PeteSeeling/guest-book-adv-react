@@ -1,3 +1,14 @@
+import { Router, Switch } from 'react-router-dom';
+import { UserProvider } from './context/UserContext';
+import Login from './views/Auth/Auth';
+import Header from './components/Layout/Header';
+
+
 export default function App() {
-  return <h1>Hello World</h1>;
+  return (
+    <UserProvider>
+      <Header />
+
+    </UserProvider>
+  )
 }
