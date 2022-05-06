@@ -20,9 +20,6 @@ export default function Login(){
         try{
             e.preventDefault();
             await login(email, password)
-        
-        const loginSuccess = auth.login(formState.email, formState.password);
-        !loginSuccess ? setError('Login Unsuccessful') : history.replace(from);
 
         }catch(error){
             setError(error.message)
@@ -36,14 +33,14 @@ export default function Login(){
             <form 
             onSubmit={handleLogin}
             onChange={handleFormChange}>
-                <label for='email'>Email</label>
+                <label htmlfor='email'>Email</label>
                 <input 
                 id='email'
                 name='email'
                 type='email'
                 value={formState.email}
                 />{' '}
-                <label for='password'>Password</label>
+                <label htmlfor='password'>Password</label>
                 <input
                 id='password'
                 name='password'
