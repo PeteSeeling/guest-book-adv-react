@@ -3,6 +3,7 @@ import EntryForm from '../../../components/GuestBook/EntryForm';
 import { useEffect, useState } from 'react';
 import { useUser } from '../../../context/UserContext';
 import { getEntries } from '../../../services/entries';
+import Entry from '../../../components/GuestBook/Entry'
 
 export default function EntryList() {
     const [entries, setEntries] = useState([])
