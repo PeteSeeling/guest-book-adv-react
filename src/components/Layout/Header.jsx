@@ -3,10 +3,11 @@ import { useUser } from '../../context/UserContext';
 import { signOutUser } from '../../services/user';
 
 
+
 export default function Header() {
     const { user, setUser } = useUser();
 
-    const signOut = async () => {
+    const handleSignOut = async () => {
         setUser('');
         await signOutUser();
     };
@@ -20,7 +21,7 @@ export default function Header() {
         {user?.email ?(
             <>
             <h3>Signed in with {user.email}</h3>
-            <button onClick={signOut}>Sign Out</button>
+            <button onClick={handleSignOut}>Sign Out</button>
             </>
         ) : (
             <Link to='/login'>
