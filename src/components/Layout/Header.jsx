@@ -1,14 +1,17 @@
 import { Link } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import { signOutUser } from '../../services/user';
+import { signOutUser, getUser } from '../../services/user';
+import { useState } from 'react';
+
 
 
 
 export default function Header() {
-    const { user, setUser } = useUser();
+    const currentUser = getUser();
+    const [user, setUser] = useState(currentUser || { email: null });
 
     const handleSignOut = async () => {
-        setUser('');
+        setUser({ email: null });
         await signOutUser();
     };
 
