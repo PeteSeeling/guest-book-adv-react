@@ -55,6 +55,7 @@ export default function Login(){
                 id='email'
                 name='email'
                 type='email'
+                placeholder='email'
                 onChange={(e) => setEmail(e.target.value)}
                 />{''}
                 <label htmlFor='password'>Password</label>
@@ -62,6 +63,7 @@ export default function Login(){
                 id='password'
                 name='password'
                 type='password'
+                placeholder='password'
                 onChange={(e) => setPassword(e.target.value)}
                 />
                   <button type='submit' aria-label='Sign-Up' onClick={handleSignup}>Sign Up</button>
