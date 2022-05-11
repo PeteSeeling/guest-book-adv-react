@@ -15,7 +15,7 @@ export default function Header() {
     return (
         <>
         <div>
-            <Link to='/'><p>GuestBook</p></Link>
+            <Link to='/'><p aria-label='guestbook'>GuestBook</p></Link>
         </div>
         <div>
         {user?.email ?(
