@@ -14,7 +14,7 @@ export default function Login(){
     
     const [error, setError] = useState(null);
     const context = useUser();
-    const [isSigningUp, setIsSigningUp] = useState(false)
+  
   
 
     async function handleLogin(e){
