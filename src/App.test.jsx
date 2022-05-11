@@ -2,7 +2,6 @@ import { render, screen } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
-import App from'./App';
 import EntryList from './views/Auth/EntryList/EntryList';
 import { MemoryRouter } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
