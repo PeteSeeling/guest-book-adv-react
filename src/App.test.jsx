@@ -9,7 +9,6 @@ import { UserProvider } from './context/UserContext';
 
 const server = setupServer();
 
-
 beforeAll(() => server.listen());
 afterEach(() => server.resetHandlers());
 afterAll(() => server.close());
@@ -34,7 +33,6 @@ const dataThreeEntries = [
     }
   ]; 
 
-  // server.use instance with 3 entry data
   server.use(
     rest.get('https://ezwbsacoojmonmiqffad.supabase.co/rest/v1/entries', (req, res, ctx) =>
       res(ctx.json(dataThreeEntries))
@@ -65,8 +63,6 @@ describe('Testing behavior', () => {
 
     
  const entryBox = screen.findByLabelText(/add entry/i)
-
-//  userEvent.type(entryBox, 'test entryBox')
 
  const submitEntry = screen.getByLabelText(/add entry button/i)
  userEvent.click(submitEntry)
