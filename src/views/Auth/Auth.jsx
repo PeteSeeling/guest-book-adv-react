@@ -1,9 +1,6 @@
 import { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import { signUpUser } from '../../services/user';
-
-
 
 
 export default function Login(){
