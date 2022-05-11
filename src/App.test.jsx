@@ -67,12 +67,12 @@ describe('Testing behavior', () => {
     
  const entryBox = screen.findByLabelText(/add entry/i)
 
- userEvent.type(entryBox, 'test entryBox')
+//  userEvent.type(entryBox, 'test entryBox')
 
  const submitEntry = screen.getByLabelText(/add entry button/i)
  userEvent.click(submitEntry)
 
- await screen.getByText(/test entryBox/i)
+screen.getByText(/test entryBox/i)
     });
 
 
