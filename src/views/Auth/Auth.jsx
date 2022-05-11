@@ -21,8 +21,10 @@ export default function Login(){
         try{
             e.preventDefault();
            context.login(email, password)
+
            const url = location.state.from ? location.state.from.pathname : '/';
            history.replaceState(url);
+
         }catch(error){
             setError(error.message)
         }
@@ -35,6 +37,7 @@ export default function Login(){
 
             const url = location.state.from ? location.state.from.pathname : '/';
             history.replaceState(url);
+
          }catch(error){
              setError(error.message)
          }
@@ -46,7 +49,7 @@ export default function Login(){
             <h3>Sign In/Sign Up</h3>
             
             <form 
-            // onSubmit={handleLogin}
+            onSubmit={handleLogin}
             // onChange={handleFormChange}
             >
                 <label htmlFor='email'>
@@ -55,6 +58,7 @@ export default function Login(){
                 id='email'
                 name='email'
                 type='email'
+                placeholder='email'
                 onChange={(e) => setEmail(e.target.value)}
                 />{''}
                 <label htmlFor='password'>Password</label>
@@ -62,6 +66,7 @@ export default function Login(){
                 id='password'
                 name='password'
                 type='password'
+                placeholder='password'
                 onChange={(e) => setPassword(e.target.value)}
                 />
                   <button type='submit' aria-label='Sign-Up' onClick={handleSignup}>Sign Up</button>

@@ -28,7 +28,7 @@ export default function EntryList() {
                {entries.length ? (
                    entries.map(({ id, content, created_at }) => {
                        return(
-                           <li key={id}>
+                           <li aria-label='list-item' key={id}>
                                <Entry
                                content={content}
                                author={user.email}
