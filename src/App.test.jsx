@@ -3,16 +3,27 @@ import userEvent from '@testing-library/user-event';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
 import EntryList from './views/Auth/EntryList/EntryList';
+import App from './App';
 import { MemoryRouter } from 'react-router-dom';
 import { UserProvider } from './context/UserContext';
 
 
-const server = setupServer();
+const server = setupServer( 
+  rest.post(
+  'https://ezwbsacoojmonmiqffad.supabase.co/auth/v1/token',
+  (req, res, ctx) => res(ctx.json(data))
+),
 
-beforeAll(() => server.listen());
-afterEach(() => server.resetHandlers());
-afterAll(() => server.close());
-const dataThreeEntries = [
+rest.get(
+  'https://ezwbsacoojmonmiqffad.supabase.co/rest/v1/entries',
+  (req, res, ctx) => res(ctx.json(data))
+)
+);
+
+// beforeAll(() => server.listen());
+// afterEach(() => server.resetHandlers());
+// afterAll(() => server.close());
+const data = [
     {
       "id": 211,
       "guest_id": "MOCK_ID_19999",
@@ -35,7 +46,7 @@ const dataThreeEntries = [
 
   server.use(
     rest.get('https://ezwbsacoojmonmiqffad.supabase.co/rest/v1/entries', (req, res, ctx) =>
-      res(ctx.json(dataThreeEntries))
+      res(ctx.json(data))
     )
   );
   
@@ -48,11 +59,23 @@ describe('Testing behavior', () => {
         render(
             <MemoryRouter>
                 <UserProvider>
-                    <EntryList />
+                    <App />
                 </UserProvider>
             </MemoryRouter>
         );
 
+const password = screen.getByPlaceholderText(/password/i)
+userEvent.type(password, 'password')
+const email = screen.getByPlaceholderText(/email/i)
+userEvent.type(email, 'test@gmail.com')
+const signIn = screen.getByLabelText(/Sign-in/i)
+userEvent.click(signIn)
+
+const guestbook = screen.getByLabelText(/guestbook/i)
+userEvent.click(guestbook)
+
+screen.findByText(/Signed in with/i)
+    
      
      const addEntryButton= await screen.findByLabelText(/add entry button/i)
 

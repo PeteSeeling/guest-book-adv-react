@@ -13,7 +13,7 @@ const env = Object.entries({
   return acc;
 }, {});
 
-// eslint-disable-next-line
+
 module.exports = {
   entry: './src/index.jsx',
   output: {
