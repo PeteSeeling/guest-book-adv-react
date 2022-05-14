@@ -4,7 +4,8 @@ import { useUser } from '../../context/UserContext'
 export default function PrivateRoute({ children, ...rest }) {
     const { user } = useUser();
     return (
-        <Route{...rest}
+        <Route
+        {...rest}
         render={({ location }) =>
         user.email ? (
             children) : (

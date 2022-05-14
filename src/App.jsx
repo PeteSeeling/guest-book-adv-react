@@ -3,7 +3,7 @@ import { UserProvider }from './context/UserContext';
 import Login from './views/Auth/Auth';
 import Header from './components/Layout/Header';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-import EntryList from './views/Auth/EntryList/EntryList'
+import EntryList from './views/Auth/EntryList/EntryList';
 
 
 export default function App() {
@@ -20,9 +20,7 @@ export default function App() {
     <PrivateRoute path='/'>
     <EntryList />
     </PrivateRoute> 
-
       </Switch>
-
     </UserProvider>
   )
 }

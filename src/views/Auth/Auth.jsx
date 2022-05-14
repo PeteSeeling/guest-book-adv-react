@@ -1,9 +1,6 @@
 import { useState } from 'react';
-import { useHistory, useLocation } from 'react-router-dom';
+import { useLocation } from 'react-router-dom';
 import { useUser } from '../../context/UserContext';
-import { signUpUser } from '../../services/user';
-
-
 
 
 export default function Login(){
@@ -14,7 +11,7 @@ export default function Login(){
     
     const [error, setError] = useState(null);
     const context = useUser();
-    const [isSigningUp, setIsSigningUp] = useState(false)
+  
   
 
     async function handleLogin(e){
@@ -22,7 +19,7 @@ export default function Login(){
             e.preventDefault();
            context.login(email, password)
 
-           const url = location.state.from ? location.state.from.pathname : '/';
+           const url = location.state.from ? location.state.from.pathname : '/dashboard';
            history.replaceState(url);
 
         }catch(error){
@@ -50,7 +47,7 @@ export default function Login(){
             
             <form 
             onSubmit={handleLogin}
-            // onChange={handleFormChange}
+        
             >
                 <label htmlFor='email'>
                     <p>Email</p></label>

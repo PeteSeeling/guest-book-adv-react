@@ -1,21 +1,22 @@
 import { Link } from 'react-router-dom';
 import { signOutUser, getUser } from '../../services/user';
-import { useState } from 'react';
+
+import { useUser } from '../../context/UserContext';
 
 
 export default function Header() {
-    const currentUser = getUser();
-    const [user, setUser] = useState(currentUser || { email: null });
-
+    const currentUser = getUser()
+    const { user, setUser } = useUser(currentUser || { email: null });
+ 
     const handleSignOut = async () => {
-        setUser({ email: null });
+        setUser();
         await signOutUser();
     };
 
     return (
         <>
         <div>
-            <Link to='/'><p aria-label='guestbook'>GuestBook</p></Link>
+            <Link to='/dashboard'><p aria-label='guestbook'>GuestBook</p></Link>
         </div>
         <div>
         {user?.email ?(
