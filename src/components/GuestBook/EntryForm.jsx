@@ -1,7 +1,7 @@
 import { useState } from 'react'
 import { useUser } from '../../context/UserContext'
 import { createEntry } from '../../services/entries'
-import Entry from '../GuestBook/Entry'
+
 
 export default function EntryForm({ onAddEntry }) {
     const [content, setContent] = useState('');

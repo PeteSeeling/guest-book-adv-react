@@ -19,7 +19,7 @@ export default function Login(){
             e.preventDefault();
            context.login(email, password)
 
-           const url = location.state.from ? location.state.from.pathname : '/';
+           const url = location.state.from ? location.state.from.pathname : '/dashboard';
            history.replaceState(url);
 
         }catch(error){
@@ -47,7 +47,7 @@ export default function Login(){
             
             <form 
             onSubmit={handleLogin}
-            // onChange={handleFormChange}
+        
             >
                 <label htmlFor='email'>
                     <p>Email</p></label>
