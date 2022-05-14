@@ -1,4 +1,4 @@
-import { render, screen } from '@testing-library/react';
+import { render, screen, waitForElementToBeRemoved } from '@testing-library/react';
 import userEvent from '@testing-library/user-event';
 import { setupServer } from 'msw/node';
 import { rest } from 'msw';
@@ -86,10 +86,12 @@ const email = screen.getByPlaceholderText(/email/i)
 const signIn = screen.getByLabelText(/Sign-in/i)
 userEvent.click(signIn)
 
+waitForElementToBeRemoved(await screen.getByLabelText(/Sign-in/i))
+
+screen.findByText(/Signed in with/i)
+
 const guestbook = screen.getByLabelText(/guestbook/i)
 userEvent.click(guestbook)
-
-await screen.getByText(/Signed in with/i)
     
      
      const addEntryButton= await screen.findByLabelText(/add entry button/i)
