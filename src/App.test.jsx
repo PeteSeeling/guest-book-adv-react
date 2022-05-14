@@ -93,22 +93,11 @@ screen.findByText(/Signed in with/i)
 const guestbook = screen.getByLabelText(/guestbook/i)
 userEvent.click(guestbook)
     
-     
-     const addEntryButton= await screen.findByLabelText(/add entry button/i)
+waitForElementToBeRemoved(await screen.getByPlaceholderText(/email/i))
 
-    expect(addEntryButton).toBeInTheDocument()
-
- await screen.findByText(/Please Pass/i)
- await screen.findByText(/let it work/)
-
-    
- const entryBox = screen.findByLabelText(/add entry/i)
-
- const submitEntry = screen.getByLabelText(/add entry button/i)
- userEvent.click(submitEntry)
-
-screen.getByText(/test entryBox/i)
-
+     const addEntry= screen.findByText(/add entry/i)
+     userEvent.type(addEntry, 'Please Pass')
+     screen.findByText(/Please Pass/i)
     });
 
 
