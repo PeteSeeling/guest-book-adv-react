@@ -5,7 +5,9 @@ import { useUser } from '../../context/UserContext';
 
 
 export default function Header() {
-    const { user, setUser } = useUser();
+    const currentUser = getUser()
+    const { user, setUser } = useUser(currentUser || { email: null });
+ 
     // const [user, setUser] = useState(currentUser || { email: null });
 
     const handleSignOut = async () => {
