@@ -9,7 +9,7 @@ export default function Header() {
     const { user, setUser } = useUser(currentUser || { email: null });
  
     const handleSignOut = async () => {
-        setUser();
+        setUser('');
         await signOutUser();
     };
 
