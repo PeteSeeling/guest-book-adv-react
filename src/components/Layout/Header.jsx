@@ -1,6 +1,5 @@
 import { Link } from 'react-router-dom';
 import { signOutUser, getUser } from '../../services/user';
-
 import { useUser } from '../../context/UserContext';
 
 
