@@ -43,8 +43,6 @@ export default function EntryList() {
                )}
            </ul>
        </div>
-
-        
         </>
     )
 }
